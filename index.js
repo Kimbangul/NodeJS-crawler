@@ -11,7 +11,10 @@ const getHtml = async () => {
     const $ = cheerio.load(html.data);
 
     let content = [];
+    const root = $("#__next");
+    // console.log(root);
     const articleList = $("li.PostsList__Item");
+    console.log(articleList);
     
     articleList.map((el, idx) => {
       console.log(el, idx);
@@ -25,7 +28,7 @@ const getHtml = async () => {
       }
     });
 
-    console.log(content);
+    // console.log(content);
     return content;
   }
   catch(e){
@@ -34,5 +37,3 @@ const getHtml = async () => {
 }
 
 const articles = getHtml();
-
-console.log(articles);
