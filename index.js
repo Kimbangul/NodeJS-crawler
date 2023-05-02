@@ -11,24 +11,18 @@ const getHtml = async () => {
     const $ = cheerio.load(html.data);
 
     let content = [];
-    const root = $("#__next");
-    // console.log(root);
-    const articleList = $("li.PostsList__Item");
-    console.log(articleList);
-    
-    articleList.map((el, idx) => {
-      console.log(el, idx);
+    const ARTICLE_SELECTOR = $("#root div:nth-child(2) div:nth-child(3) div:nth-child(4) div:nth-child(3) > div > div");
+
+    ARTICLE_SELECTOR.map((idx, el) => {
       content[idx] = {
-        head: $(el).find("h3.PostsList__Text").text().replace(/\s/g, ""),
-        date: 'date',
-        context: 'context',
-        href: 'href',
-        headline: 'headline',
+        head: $(el).find("img").attr('src'),
+        date: $(el).find(".subinfo > span").text(),
+        context: $(el).find("p").text(),
+        href: $(el).find("a:first-child").attr('href'),
+        headline: $(el).find("h2").text(),
         tags: 'tags',
       }
     });
-
-    // console.log(content);
     return content;
   }
   catch(e){
@@ -37,3 +31,4 @@ const getHtml = async () => {
 }
 
 const articles = getHtml();
+console.log(articles);
