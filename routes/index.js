@@ -7,8 +7,12 @@ const router = express.Router();
  * host:port
  *  */
 router.get('/', (req, res) => {
-  console.log(crawler);
-  res.send(crawler);
+  // console.log(data);
+  console.log(typeof crawler);
+  const data = {
+    dummy: true
+  }
+  res.send(data);
 });
 
 module.exports = router;

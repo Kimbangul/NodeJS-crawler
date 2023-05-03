@@ -23,6 +23,9 @@ const getHtml = async () => {
         tags: 'tags',
       }
     });
+
+    content = JSON.stringify(content);
+
     return content;
   }
   catch(e){
@@ -32,4 +35,4 @@ const getHtml = async () => {
 
 const articles = getHtml();
 
-module.exports= articles;
+module.exports = articles;

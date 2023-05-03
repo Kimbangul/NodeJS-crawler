@@ -18,11 +18,19 @@ app.use(cors({
 // NOTE router
 app.use('/', router);
 
+app.use(function (req, res, next) {
+  res.setHeader("Content-Type", "application/json");
+  next();
+});
+
 app.use(
   express.json({
     limit: '50mb', // 최대 50mb
   })
 );
+app.use(express.urlencoded({
+  extended: true
+}))
 
 // FUNCTION start run server
 app.listen(port, () => {
