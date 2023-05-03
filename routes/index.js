@@ -7,6 +7,7 @@ const router = express.Router();
  * host:port
  *  */
 router.get('/', (req, res) => {
+  console.log(crawler);
   res.send(crawler);
 });
 
