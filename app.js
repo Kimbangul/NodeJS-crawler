@@ -1,19 +1,13 @@
-// const express = require('express');
-import Express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-
-import crawler from './crawler/index.js';
-import router from './routes/index.js';
-// const dotenv = require('dotenv');
-// const cors = require('cors');
-// const crawler = require('./crawler/index');
-// const router = require('./routes/index');
+// NOTE import module
+const express = require("express");
+const dotenv = require('dotenv');
+const cors = require('cors');
+const router = require('./routes/index');
 
 dotenv.config();
 
 // NOTE config
-const app = Express();
+const app = express();
 const port = process.env.PORT;
 
 // NOTE 접속 설정

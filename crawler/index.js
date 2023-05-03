@@ -31,6 +31,5 @@ const getHtml = async () => {
 }
 
 const articles = getHtml();
-console.log(articles);
 
-export default articles;
+module.exports= articles;
