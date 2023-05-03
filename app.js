@@ -30,7 +30,8 @@ app.use(
 );
 app.use(express.urlencoded({
   extended: true
-}))
+}));
+
 
 // FUNCTION start run server
 app.listen(port, () => {
