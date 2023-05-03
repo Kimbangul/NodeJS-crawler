@@ -5,6 +5,7 @@ const cheerio = require('cheerio');
 // PARAM 상수
 const URL = "https://velog.io/@kimbangul";
 
+
 const getHtml = async () => {
   try {
     const html = await axios.get(URL);
@@ -13,19 +14,34 @@ const getHtml = async () => {
     let content = [];
     const ARTICLE_SELECTOR = $("#root div:nth-child(2) div:nth-child(3) div:nth-child(4) div:nth-child(3) > div > div");
 
+    // FUNCTION get tag
+    const getTag = (tagSelector) => {
+      let result = []
+      
+      const tagList = $(tagSelector).find(".tags-wrapper > a");
+
+      tagList.map((idx,el)=>{
+        const tag = $(el).text();
+        result[idx] = tag;
+      });
+    
+      console.log(result);
+      return result;
+    }
+
     ARTICLE_SELECTOR.map((idx, el) => {
       content[idx] = {
         head: $(el).find("img").attr('src'),
-        date: $(el).find(".subinfo > span").text(),
+        date: $(el).find(".subinfo > span:first-of-type").text(),
         context: $(el).find("p").text(),
         href: $(el).find("a:first-child").attr('href'),
         headline: $(el).find("h2").text(),
-        tags: 'tags',
+        tags: getTag(el),
       }
     });
 
     content = JSON.stringify(content);
-
+    console.log(content);
     return content;
   }
   catch(e){
