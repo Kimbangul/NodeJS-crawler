@@ -12,7 +12,10 @@ const port = process.env.PORT;
 
 // NOTE 접속 설정
 app.use(cors({
-  origin: '*', // TODO
+  origin: ["http://localhost:3000","https://yerim-e.com"],
+  // default: "www.one.com",
+  credentials: true,
+  optionsSuccessStatus: 200
 }));
 
 // NOTE router
