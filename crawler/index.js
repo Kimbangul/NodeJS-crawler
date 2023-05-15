@@ -6,9 +6,9 @@ const cheerio = require('cheerio');
 const URL = "https://velog.io/@kimbangul";
 
 
-const getHtml = async () => {
+const getHtml = async (url) => {
   try {
-    const html = await axios.get(URL);
+    const html = await axios.get(url);
     const $ = cheerio.load(html.data);
 
     let content = [];
@@ -47,6 +47,6 @@ const getHtml = async () => {
   }
 }
 
-const articles = getHtml();
+const articles = (url) => getHtml(url);
 
 module.exports = articles;

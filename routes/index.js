@@ -16,10 +16,7 @@ router.get('/', async (req, res) => {
     url = process.env.DEFAULT;
   }
 
-  console.log(url);
-  console.log(process.env.DEFAULT);
-
-  const data = await Promise.resolve(crawler);
+  const data = await Promise.resolve(crawler(url));
   res.json(data);
 });
 
