@@ -25,7 +25,6 @@ const getHtml = async () => {
         result[idx] = tag;
       });
     
-      console.log(result);
       return result;
     }
 
@@ -41,7 +40,6 @@ const getHtml = async () => {
     });
 
     content = JSON.stringify(content);
-    console.log(content);
     return content;
   }
   catch(e){
