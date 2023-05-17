@@ -11,6 +11,7 @@ const router = express.Router();
  *  */
 router.get('/', async (req, res) => {
   let id;
+  let data = [];
 
   if (!req.query.id){
     id = process.env.DEFAULT;
@@ -18,11 +19,15 @@ router.get('/', async (req, res) => {
   else{
     id = `https://velog.io/@${req.query.id}`;
   }
+    
+  try{
+    data = await Promise.resolve(crawler(id));
+  }
+  catch(e){
+    console.log(e);
+  }
 
-  console.log(id);
-
-  const data = await Promise.resolve(crawler(id));
-  res.json(data);
+  return res.json(data2);
 });
 
 module.exports = router;
