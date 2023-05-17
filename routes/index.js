@@ -10,18 +10,18 @@ const router = express.Router();
  * host:port
  *  */
 router.get('/', async (req, res) => {
-  let url;
+  let id;
 
-  if (!req.query.url){
-    url = process.env.DEFAULT;
+  if (!req.query.id){
+    id = process.env.DEFAULT;
   }
   else{
-    url = `https://velog.io/@${req.query.url}`;
+    id = `https://velog.io/@${req.query.id}`;
   }
 
-  console.log(url);
+  console.log(id);
 
-  const data = await Promise.resolve(crawler(url));
+  const data = await Promise.resolve(crawler(id));
   res.json(data);
 });
 
